@@ -1,5 +1,4 @@
 ﻿using CodeKata.DTO;
-using CodeKata.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -54,21 +53,6 @@ namespace CodeKata.Utilities
             return output.OrderByDescending(x => x.Value.MilesDrivenTotal).ToDictionary(i=>i.Key, j=>j.Value);
         }
 
-        private Driver SaveDriver(string[] items)
-        {
-            return new Driver { Name = items[1] };
-        }
-
-        private Trip SaveTrip(string[] items)
-        {
-            string[] formats = { "%h", "g", "G" };
-            CultureInfo culture = new CultureInfo("es-MX");
-            return new Trip
-            {
-                EndTime = TimeSpan.ParseExact(items[3], formats, culture, TimeSpanStyles.AssumeNegative),
-                StartTime = TimeSpan.ParseExact(items[2], formats, culture, TimeSpanStyles.AssumeNegative),
-                MilesDriven = Convert.ToDecimal(items[4])
-            };
-        }
+        
     }
 }
